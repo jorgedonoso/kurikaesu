@@ -1,6 +1,7 @@
 {
   "name": "kurikaesu",
   "version": "0.1.0",
+  "author": "Jorge Donoso",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
