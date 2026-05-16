@@ -15,19 +15,24 @@ export default function Home() {
 
       {/* Show character */}
       {showCharacter && (
-        <div className="text-[40vh] font-bold text-black">
+        <div className="text-[10vw] font-bold text-black">
           {currentKana.char}
         </div>
       )}
 
       {/* Show romaji */}
       {!showCharacter && (
-        <div className="text-[40vh] font-bold text-[#9ACD32]">
+        <div className="text-[10vw] font-bold text-[#9ACD32] leading-none break-words">
           {currentKana.romaji}
+          {currentKana.meaning && (
+            <div className="text-sm text-gray-500 mt-2">
+              {currentKana.meaning}
+            </div>
+          )}
         </div>
       )}
 
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-sm mt-4">
         Script:
         <select
           value={selection}
@@ -38,6 +43,7 @@ export default function Home() {
         >
           <option>Katakana</option>
           <option>Hiragana</option>
+          <option>214 Classic Radicals</option>
           <option>All</option>
         </select>
       </div>
