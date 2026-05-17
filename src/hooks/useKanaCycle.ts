@@ -8,19 +8,32 @@ export default function useKanaCycle(kanaList: Moji[]) {
     char: "",
     romaji: "",
   });
+  const [elapsedMs, setElapsedMs] = useState(0);
 
   useEffect(() => {
+    if (kanaList.length === 0) return;
+
     let active = true;
+    let startTime = Date.now();
     let timeoutId: ReturnType<typeof setTimeout>;
+    let intervalId: ReturnType<typeof setInterval>;
 
     const startCycle = () => {
-      if (!active || kanaList.length === 0) return;
+      if (!active) return;
 
       const randomIndex = Math.floor(Math.random() * kanaList.length);
       const nextKana = kanaList[randomIndex];
-
       setCurrentKana(nextKana);
       setShowCharacter(true);
+
+      startTime = Date.now();
+      setElapsedMs(0);
+
+      // Update elapsedMs every 50ms. 50ms is ok.
+      intervalId = setInterval(() => {
+        if (!active) return;
+        setElapsedMs(Date.now() - startTime);
+      }, 50);
 
       timeoutId = setTimeout(() => {
         if (!active) return;
@@ -28,6 +41,7 @@ export default function useKanaCycle(kanaList: Moji[]) {
 
         timeoutId = setTimeout(() => {
           if (!active) return;
+          clearInterval(intervalId);
           startCycle();
         }, 3000);
       }, 3000); // TODO: Let user set speed.
@@ -36,10 +50,11 @@ export default function useKanaCycle(kanaList: Moji[]) {
     startCycle();
 
     return () => {
-      active = true;
+      active = false;
       clearTimeout(timeoutId);
+      clearInterval(intervalId);
     };
   }, [kanaList]);
 
-  return { currentKana, showCharacter };
+  return { currentKana, showCharacter, elapsedMs };
 }

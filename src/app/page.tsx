@@ -7,7 +7,7 @@ import useKanaList from "@/hooks/useKanaList";
 export default function Home() {
   const [selection, setSelection] = useState<ScriptOptions>("Katakana");
   const kanaList = useKanaList(selection);
-  const { currentKana, showCharacter } = useKanaCycle(kanaList);
+  const { currentKana, showCharacter, elapsedMs } = useKanaCycle(kanaList);
 
   return (
     <>
@@ -19,7 +19,13 @@ export default function Home() {
         <div className="text-[clamp(10rem,50vw,25rem)] font-bold text-[#4ec49b]">
           {currentKana.char}
         </div>
-
+        {showCharacter && (
+          <progress
+            className="h-6 appearance-none w-64"
+            value={elapsedMs}
+            max="3000"
+          ></progress>
+        )}
         {/* Show romaji */}
         {!showCharacter && (
           <div className="p-2">
