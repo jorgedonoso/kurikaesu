@@ -1,6 +1,14 @@
+# Kurikaesu (繰り返す)
+
+**Pronunciation:** ku-ri-ka-e-su
+
+**Meaning:** **To repeat**; to do something over again.
+
 ## About
 
-Tool to practice kana. Under construction.
+Tool to practice Katakana, Hiragana, and 214 Classic Radicals. Run it in a little corner while you do anything else.
+
+[https://kurikaesu.vercel.app](https://kurikaesu.vercel.app)
 
 ![Idea](./public/demo.png)
 
@@ -10,13 +18,11 @@ To run locally:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+
+## Theme
+
+The colors were inspired by NOFX’s album "So Long and Thanks for All the Shoes."
 
 ## License
 
