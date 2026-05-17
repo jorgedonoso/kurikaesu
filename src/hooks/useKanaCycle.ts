@@ -2,7 +2,7 @@ import { Moji } from "@/types/Moji";
 import { useState, useEffect } from "react";
 
 // This hook manages the cycle of showing the character OR the romaji.
-export default function useKanaCycle(kanaList: Moji[]) {
+export default function useKanaCycle(kanaList: Moji[], speedMs: number) {
   const [showCharacter, setShowCharacter] = useState(true);
   const [currentKana, setCurrentKana] = useState<Moji>({
     char: "",
@@ -43,8 +43,8 @@ export default function useKanaCycle(kanaList: Moji[]) {
           if (!active) return;
           clearInterval(intervalId);
           startCycle();
-        }, 3000);
-      }, 3000); // TODO: Let user set speed.
+        }, speedMs);
+      }, speedMs);
     };
 
     startCycle();
@@ -54,7 +54,7 @@ export default function useKanaCycle(kanaList: Moji[]) {
       clearTimeout(timeoutId);
       clearInterval(intervalId);
     };
-  }, [kanaList]);
+  }, [kanaList, speedMs]);
 
   return { currentKana, showCharacter, elapsedMs };
 }
