@@ -1,11 +1,14 @@
 "use client";
 import { useState } from "react";
-import { ScriptOptions } from "@/types/ScriptOptions";
+import { Select } from "@/components/Select";
+import { Script } from "@/types/Script";
 import useKanaCycle from "@/hooks/useKanaCycle";
 import useKanaList from "@/hooks/useKanaList";
+import { speedOptions } from "@/data/speedOptions";
+import { scriptOptions } from "@/data/scriptOptions";
 
 export default function Home() {
-  const [selection, setSelection] = useState<ScriptOptions>("Katakana");
+  const [selection, setSelection] = useState<Script>("Katakana");
   const kanaList = useKanaList(selection);
   const [speedMs, setSpeedMs] = useState<number>(3000);
   const { currentKana, showCharacter, elapsedMs } = useKanaCycle(
@@ -47,34 +50,18 @@ export default function Home() {
 
       <div className="w-full bg-[#F79BBF] text-white p-2">
         <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 items-start">
-          <div className="w-full md:flex-1">
-            <label className="font-bold block mb-1">Script:</label>
-            <select
-              value={selection}
-              onChange={(event) =>
-                setSelection(event.target.value as ScriptOptions)
-              }
-              className="block w-full py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 bg-[#4ec49b] text-white"
-            >
-              <option>Katakana</option>
-              <option>Hiragana</option>
-              <option>214 Classic Radicals</option>
-              <option>All</option>
-            </select>
-          </div>
-          <div className="w-full md:flex-1">
-            <label className="font-bold block mb-1">Speed:</label>
-            <select
-              value={speedMs}
-              onChange={(event) => setSpeedMs(Number(event.target.value))}
-              className="block w-full py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 bg-[#4ec49b] text-white"
-            >
-              <option value={4000}>Slow</option>
-              <option value={3000}>Medium</option>
-              <option value={2000}>Fast</option>
-              <option value={1000}>神モード</option>
-            </select>
-          </div>
+          <Select
+            label="Script"
+            value={selection}
+            onChange={setSelection}
+            options={scriptOptions}
+          />
+          <Select
+            label="Speed"
+            value={speedMs}
+            onChange={setSpeedMs}
+            options={speedOptions}
+          />
         </div>
       </div>
     </>

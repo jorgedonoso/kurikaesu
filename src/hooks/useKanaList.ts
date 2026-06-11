@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { hiragana } from "../data/hiragana";
 import { katakana } from "../data/katakana";
 import { radicals } from "../data/radicals";
-import { ScriptOptions } from "@/types/ScriptOptions";
+import { Script } from "@/types/Script";
 
 // This hook returns dictionary based on dropdown selection.
-export default function useKanaList(selection: ScriptOptions): Moji[] {
+export default function useKanaList(selection: Script): Moji[] {
   const [kanaList, setKanaList] = useState<Moji[]>([]);
 
   useEffect(() => {
