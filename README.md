@@ -10,8 +10,6 @@ Tool to practice Katakana, Hiragana, and 214 Classic Radicals. Run it in a littl
 
 [https://kurikaesu.vercel.app](https://kurikaesu.vercel.app)
 
-![Idea](./public/demo.png)
-
 ## Getting Started
 
 To run locally:
@@ -23,6 +21,8 @@ npm run dev
 ## Theme
 
 The colors were inspired by NOFX’s album "So Long and Thanks for All the Shoes."
+
+![Kurikaesu Demo](./docs/demo.png)
 
 ## License
 
