@@ -18,7 +18,7 @@ export default function Home() {
       <h1 className="w-full text-center text-slate-50 text-4xl font-extrabold tracking-tight bg-[#72241a] p-4 shadow">
         Kurikaesu
       </h1>
-      <div className="w-full flex-1 flex flex-col items-center justify-center bg-[#f6ffec]">
+      <div className="w-full flex-1 flex flex-col items-center justify-center bg-[#ffffd3]">
         {/* Show character */}
         <div className="text-[clamp(10rem,50vw,25rem)] font-bold text-[#4ec49b]">
           {currentKana.char}
@@ -54,7 +54,7 @@ export default function Home() {
               onChange={(event) =>
                 setSelection(event.target.value as ScriptOptions)
               }
-              className="block w-full py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-white"
+              className="block w-full py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 bg-[#4ec49b] text-white"
             >
               <option>Katakana</option>
               <option>Hiragana</option>
@@ -67,7 +67,7 @@ export default function Home() {
             <select
               value={speedMs}
               onChange={(event) => setSpeedMs(Number(event.target.value))}
-              className="block w-full py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-white"
+              className="block w-full py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 bg-[#4ec49b] text-white"
             >
               <option value={4000}>Slow</option>
               <option value={3000}>Medium</option>
